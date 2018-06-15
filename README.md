@@ -30,7 +30,7 @@ Ballerina function deployed in kubeless supports passing configurations via kube
 Create a folder named twitter and create a file named tweet_func.bal and paste the following code. This function sends a tweet using credentials in the config file.
 
 > Important things to note: The function signature should match the following.
-> public function <FunctionName>(kubeless:Event event, kubeless:Context context) returns (string|error) 
+``` public function <FunctionName>(kubeless:Event event, kubeless:Context context) returns (string|error) ```
 
 
 ```ballerina
