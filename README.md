@@ -11,7 +11,9 @@ This guide contains the following sections.
 - [Implementation](#implementation)
 - [Deployment](#deployment)
 - [Testing](#testing)
-- [Observability](#observability)
+- [Troubleshooting](#Troubleshooting)
+
+## What you'll build 
 
 ## Prerequisites 
 
@@ -21,70 +23,16 @@ This guide contains the following sections.
 
 ## Implementation
 
-### Create Ballerina Function
-
-Create a file named echo.bal and paste the following code. This is simple echo function. The function returns the same value user passes to function, back the to the user. The value passed to the function can be accessed by `event.data`.
-
-```ballerina
-import kubeless/kubeless;
-import ballerina/io;
-
-public function echo(kubeless:Event event, kubeless:Context context) returns (string|error) {
-   io:println(event);
-   io:println(context);
-   return event.data;
-}
-```
-
-Important things to note: 
-The function signature should match the following.
-public function <FunctionName>(kubeless:Event event, kubeless:Context context) returns (string|error) 
-
-### Deploy the function
-
-Deploy the function using Kubeless CLI.
-
-```bash
-$ kubeless function deploy echo --runtime ballerina0.970.1 --from-file ./echo.bal --handler echo.echo
-```
-
-INFO[0000] Deploying function...
-INFO[0000] Function echo submitted for deployment
-INFO[0000] Check the deployment status executing 'kubeless function ls echo'
-
-Dissect of the command:
-
-echo: This is the name of the function to deploy.
-
---runtime ballerina0.970.1: This is the runtime we want to use to run our function.
-
---from-file echo.bal: This is the file containing the function code. It is supported to specify a zip file as far as it doesn't exceed the maximum size for an etcd entry (1 MB).
-
---handler echo.echo: This specifies the file and the exposed function that will be used when receiving requests. In this example we are using the function echo from the file echo.bal.
-
-Verify the function is deployed and running.
-
-```ballerina
-$ kubeless function ls
-
-NAME	NAMESPACE	HANDLER  	RUNTIME         	DEPENDENCIES	STATUS
-echo	default  	echo.echo	ballerina0.970.1	            	1/1 READY
-```
-
-### Invoke the function
-
-The function can be invoked with kubless command.
-
-```bash
-$ kubeless function call echo --data 'Hello Ballerina!'
-Hello Ballerina!
-```
-
 ### Create Ballerina Function with configuration file
 
 Ballerina function deployed in kubeless supports passing configurations via kubeless.toml file.
 
 Create a folder named twitter and create a file named tweet_func.bal and paste the following code. This function sends a tweet using credentials in the config file.
+
+> Important things to note: 
+> The function signature should match the following.
+> public function <FunctionName>(kubeless:Event event, kubeless:Context context) returns (string|error) 
+
 
 ```ballerina
 import kubeless/kubeless;
@@ -126,7 +74,7 @@ zip -r -j twitter.zip twitter/
 
 It is important to use `-j` option to avoid the zipping the folder when creating the zip file.
 
-### Deploy the function
+## Deployment
 
 Pass the zip file to kubeless command.
 
@@ -147,7 +95,7 @@ NAME   	NAMESPACE	HANDLER         	RUNTIME         	DEPENDENCIES	STATUS
 twitter	default  	tweet_func.tweet	ballerina0.970.1	            	1/1 READY
 ```
 
-### Invoke the function
+## Testing
 
 ```bash
 $ kubeless function call twitter --data 'Hello world! from @kubeless_sh and @ballerinaplat'
