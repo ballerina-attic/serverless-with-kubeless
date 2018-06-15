@@ -20,8 +20,8 @@ In this guide, you will build a simple Ballerina function that tweets payload an
 
 ## Prerequisites 
 
-- Ballerina Distribution 
-- Kubeless 
+- [Ballerina Distribution](https://ballerina.io/learn/getting-started/) 
+- [Kubeless](http://kubeless.io) 
 - A Text Editor or an IDE
 
 ## Implementation
