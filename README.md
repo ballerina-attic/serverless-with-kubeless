@@ -120,7 +120,7 @@ echo	default  	echo.echo	ballerina0.970.1	            	1/1 READY
 $ kubeless function delete echo
 ```
 
-### Troubleshooting
+## Troubleshooting
 
 Following commands can be used for troubleshooting. 
 
