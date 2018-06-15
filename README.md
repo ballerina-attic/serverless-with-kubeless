@@ -15,6 +15,9 @@ This guide contains the following sections.
 
 ## What you'll build 
 
+In this guide, you will build a simple Ballerina function that tweets payload and you will deploy that function on Kubeless serverless framework. 
+
+
 ## Prerequisites 
 
 - Ballerina Distribution 
