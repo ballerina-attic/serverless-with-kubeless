@@ -6,15 +6,20 @@ In this guide, you learn to setup Kubeless and write FaaS using Ballerina.
 
 This guide contains the following sections.
 
-PREREQUISITES
-IMPLEMENTATION
-PREREQUISITES 
+- [What you'll build](#what-youll-build)
+- [Prerequisites](#prerequisites)
+- [Implementation](#implementation)
+- [Deployment](#deployment)
+- [Testing](#testing)
+- [Observability](#observability)
+
+## Prerequisites 
 
 - Ballerina Distribution 
 - Kubeless 
 - A Text Editor or an IDE
 
-## IMPLEMENTATION
+## Implementation
 
 ### Create Ballerina Function
 
