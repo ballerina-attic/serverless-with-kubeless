@@ -97,6 +97,8 @@ twitter	default  	tweet_func.tweet	ballerina0.970.1	            	1/1 READY
 
 ## Testing
 
+### Invoke the function
+
 ```bash
 $ kubeless function call twitter --data 'Hello world! from @kubeless_sh and @ballerinaplat'
 
